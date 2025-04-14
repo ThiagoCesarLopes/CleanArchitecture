@@ -1,0 +1,6 @@
+services:
+  ambev.order.api:
+    image: ${DOCKER_REGISTRY-}ambevorderapi
+    build:
+      context: .
+      dockerfile: src/Ambev.Order.Api/Dockerfile
