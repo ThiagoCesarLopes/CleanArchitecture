@@ -1,17 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Order.Domain", "src\Ambev.Order.Domain\CleanArchitecture.Order.Domain.csproj", "{E75E9E2F-6519-4F4E-A9EA-2E0B341F8EA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.OrderManagement.Domain", "src\Ambev.Order.Domain\CleanArchitecture.OrderManagement.Domain.csproj", "{E75E9E2F-6519-4F4E-A9EA-2E0B341F8EA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Order.Application", "src\Ambev.Order.Application\CleanArchitecture.Order.Application.csproj", "{C414F89D-ABB2-4864-9C59-51C9AC4088C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.OrderManagement.Application", "src\Ambev.Order.Application\CleanArchitecture.OrderManagement.Application.csproj", "{C414F89D-ABB2-4864-9C59-51C9AC4088C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Order.Infrastructure", "src\Ambev.Order.Infrastructure\CleanArchitecture.Order.Infrastructure.csproj", "{4E4DDDFA-2579-41AD-AD35-6942C0F9D78D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.OrderManagement.Infrastructure", "src\Ambev.Order.Infrastructure\CleanArchitecture.OrderManagement.Infrastructure.csproj", "{4E4DDDFA-2579-41AD-AD35-6942C0F9D78D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Order.Api", "src\Ambev.Order.Api\CleanArchitecture.Order.Api.csproj", "{90DBF23A-D3F7-4F73-8A49-C4537AC33290}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.OrderManagement.Api", "src\Ambev.Order.Api\CleanArchitecture.OrderManagement.Api.csproj", "{90DBF23A-D3F7-4F73-8A49-C4537AC33290}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{81DDED9D-158B-E303-5F62-77A2896D2A5A}"
 EndProject

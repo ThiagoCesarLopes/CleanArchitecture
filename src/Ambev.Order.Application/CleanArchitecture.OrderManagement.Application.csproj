@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Ambev.Order.Domain\CleanArchitecture.OrderManagement.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

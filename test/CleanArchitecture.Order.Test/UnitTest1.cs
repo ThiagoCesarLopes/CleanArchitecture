@@ -1,4 +1,4 @@
-namespace CleanArchitecture.Order.Test
+namespace CleanArchitecture.OrderManagement.Test
 {
     public class UnitTest1
     {

@@ -1,6 +1,6 @@
 services:
-  ambev.order.api:
-    image: ${DOCKER_REGISTRY-}ambevorderapi
+  CleanArchitecture.orderManagement.api:
+    image: ${DOCKER_REGISTRY-}cleanArchitectureorderapi
     build:
       context: .
-      dockerfile: src/Ambev.Order.Api/Dockerfile
+      dockerfile: src/CleanArchitecture.OrderManagement.Api/Dockerfile
