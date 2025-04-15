@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ambev.Order.Domain\CleanArchitecture.OrderManagement.Domain.csproj" />
+    <ProjectReference Include="..\Ambev.Order.Infrastructure\CleanArchitecture.OrderManagement.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

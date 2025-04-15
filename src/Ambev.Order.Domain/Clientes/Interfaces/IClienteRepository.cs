@@ -5,6 +5,6 @@ namespace CleanArchitecture.OrderManagement.Domain.Clientes.Interfaces
 {
     public interface IClienteRepository
     {
-        Task<Cliente?> ObterPorIdAsync(int id);
+        Task<Cliente?> GetClientByIdAsync(Guid ClientId);
     }
 }

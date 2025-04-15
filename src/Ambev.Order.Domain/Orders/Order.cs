@@ -4,12 +4,12 @@
     {
         public int Id { get; private set; }
         public int PedidoId { get; private set; }
-        public int ClienteId { get; private set; }
+        public Guid ClienteId { get; private set; }
         public List<OrderItem> Itens { get; private set; } = new();
         public decimal Imposto { get; private set; }
         public string Status { get; private set; } = "Criado";
 
-        public Order(int pedidoId, int clienteId)
+        public Order(int pedidoId, Guid clienteId)
         {
             PedidoId = pedidoId;
             ClienteId = clienteId;

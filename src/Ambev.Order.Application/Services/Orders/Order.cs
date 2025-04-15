@@ -5,6 +5,7 @@ using CleanArchitecture.OrderManagement.Application.DTOs.Orders;
 using CleanArchitecture.OrderManagement.Domain.Clientes.Interfaces;
 using CleanArchitecture.OrderManagement.Domain.Orders;
 using CleanArchitecture.OrderManagement.Domain.Orders.Interfaces;
+using CleanArchitecture.OrderManagement.Infrastructure.FeatureManager.Interfaces;
 
 namespace CleanArchitecture.OrderManagement.Application.Services.Orders
 {
@@ -26,17 +27,18 @@ namespace CleanArchitecture.OrderManagement.Application.Services.Orders
        
         }
 
-        public async Task<OrderResponse> CriarOrderAsync(CriarOrderRequest request)
+        public async Task<OrderResponse> CreateOrderAsync(CreateOrderRequest request)
         {
-            if (await _orderRepository.ExisteOrderAsync(request.orderId))
+            if (await _orderRepository.ExistOrderAsync(request.OrderId))
                 throw new InvalidOperationException("order duplicado");
 
-            var cliente = await _clienteRepository.ObterPorIdAsync(request.ClienteId);
+            var cliente = await _clienteRepository.GetClientByIdAsync(request.ClienteId);
             if (cliente == null)
                 throw new InvalidOperationException("Cliente não encontrado");
 
-            var order = new Order(request.orderId, request.ClienteId);
-            foreach (var item in request.Itens)
+            var order = new Order(request.OrderId, request.ClienteId);
+
+            foreach (var item in request.OrderId)
             {
                 order.AdicionarItem(item.ProdutoId, item.Quantidade, item.Valor);
             }
@@ -44,20 +46,20 @@ namespace CleanArchitecture.OrderManagement.Application.Services.Orders
             var usarNovaRegra = await _featureManager.IsEnabledAsync("NovaRegraImposto");
             order.CalcularImposto(usarNovaRegra);
 
-            await _orderRepository.AdicionarAsync(order);
+            await _orderRepository.AddAsync(order);
 
             return new OrderResponse(order);
         }
 
-        public async Task<OrderResponse?> ObterPorIdAsync(int id)
+        public async Task<OrderResponse?> GetOrderIdAsync(int id)
         {
-            var order = await _orderRepository.ObterPorIdAsync(id);
+            var order = await _orderRepository.GetOrderIdAsync(id);
             return order == null ? null : new OrderResponse(order);
         }
 
-        public async Task<IEnumerable<OrderResponse>> ListarPorStatusAsync(string status)
+        public async Task<IEnumerable<OrderResponse>> ListOrderStatusAsync(string status)
         {
-            var orders = await _orderRepository.ListarPorStatusAsync(status);
+            var orders = await _orderRepository.ListOrderStatusAsync(status);
             return orders.Select(p => new OrderResponse(p));
         }
     }

@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitecture.OrderManagement.Infrastructure.Data
 {
-    public class PedidoDbContext : DbContext
+    public class OrderDbContext : DbContext
     {
-        public PedidoDbContext(DbContextOptions<PedidoDbContext> options) : base(options)
+        public OrderDbContext(DbContextOptions<OrderDbContext> options) : base(options)
         {
         }
 
         // DbSet para a entidade Pedido
-        public DbSet<Domain.Orders.Order> Pedidos { get; set; }
+        public DbSet<Order> Order { get; set; }
 
         // Configuração do modelo
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -4,6 +4,6 @@ namespace CleanArchitecture.OrderManagement.Application.Services.Clientes
 {
     public interface IClienteService
     {
-        Task<Cliente?> ObterPorIdAsync(int id);
+        Task<Cliente?> GetClientByIdAsync(Guid clientId);
     }
 }

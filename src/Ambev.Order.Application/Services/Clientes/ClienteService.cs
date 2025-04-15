@@ -14,9 +14,9 @@ namespace CleanArchitecture.OrOrderManagementder.Application.Services.Clientes
             _clienteRepository = clienteRepository;
         }
 
-        public async Task<Cliente?> ObterPorIdAsync(int id)
+        public async Task<Cliente?> GetClientByIdAsync(Guid clientId)
         {
-            return await _clienteRepository.ObterPorIdAsync(id);
+            return await _clienteRepository.GetClientByIdAsync(clientId);
         }
     }
 }

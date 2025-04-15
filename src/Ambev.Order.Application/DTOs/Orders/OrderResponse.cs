@@ -1,6 +1,7 @@
 ﻿
 using CleanArchitecture.OrderManagement.Application.DTOs.Clientes;
 using CleanArchitecture.OrderManagement.Domain.Clientes;
+using CleanArchitecture.OrderManagement.Domain.Orders;
 
 namespace CleanArchitecture.OrderManagement.Application.DTOs.Orders
 {
@@ -9,7 +10,7 @@ namespace CleanArchitecture.OrderManagement.Application.DTOs.Orders
     {
         public int Id { get; set; }
         public int PedidoId { get; set; }
-        public int ClienteId { get; set; }
+        public Guid ClienteId { get; set; }
         public ClienteResponse? Cliente { get; set; }
         public decimal Imposto { get; set; }
         public string Status { get; set; } = string.Empty;

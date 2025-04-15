@@ -9,32 +9,32 @@ namespace CleanArchitecture.OrderManagement.Infrastructure.Repositories.Orders
 {
     public class OrderRepository : IOrderRepository
     {
-        private readonly PedidoDbContext _context;
+        private readonly OrderDbContext _context;
 
-        public OrderRepository(PedidoDbContext context)
+        public OrderRepository(OrderDbContext context)
         {
             _context = context;
         }
 
-        public async Task AdicionarAsync(Order pedido)
+        public async Task AddAsync(Order pedido)
         {
-            _context.Pedidos.Add(pedido);
+            _context.Order.Add(pedido);
             await _context.SaveChangesAsync();
         }
 
-        public async Task<bool> ExisteOrdersync(int pedidoId)
+        public async Task<bool> ExistOrderAsync(int pedidoId)
         {
-            return await _context.Pedidos.AnyAsync(p => p.PedidoId == pedidoId);
+            return await _context.Order.AnyAsync(p => p.PedidoId == pedidoId);
         }
 
-        public async Task<Order?> ObterPorIdAsync(int id)
+        public async Task<Order?> GetOrderIdAsync(int id)
         {
-            return await _context.Pedidos.Include(p => p.Itens).FirstOrDefaultAsync(p => p.Id == id);
+            return await _context.Order.Include(p => p.Itens).FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<IEnumerable<Order>> ListarPorStatusAsync(string status)
+        public async Task<IEnumerable<Order>> ListOrderStatusAsync(string status)
         {
-            return await _context.Pedidos.Include(p => p.Itens)
+            return await _context.Order.Include(p => p.Itens)
                                          .Where(p => p.Status == status)
                                          .ToListAsync();
         }

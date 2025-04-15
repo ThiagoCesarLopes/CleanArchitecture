@@ -5,14 +5,15 @@ using CleanArchitecture.OrderManagement.Domain.Clientes;
 namespace CleanArchitecture.OrderManagement.Application.DTOs.Orders
 {
 
-    public class CriarOrderRequest
+    public class CreateOrderRequest
     {
+        public int OrderId { get; set; }
         public Guid ClienteId { get; set; }
         public List<Guid> ProdutosIds { get; set; }
         public DateTime DataPedido { get; set; }
         public decimal ValorTotal { get; set; }
 
-        public CriarOrderRequest()
+        public CreateOrderRequest()
         {
             ProdutosIds = new List<Guid>();
         }
