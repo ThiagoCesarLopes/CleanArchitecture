@@ -18,5 +18,10 @@ namespace CleanArchitecture.OrOrderManagementder.Application.Services.Clients
         {
             return await _clientRepository.GetClientByIdAsync(clientId);
         }
+        public async Task<Client?> AddAsync(Client client)
+        {
+            return await _clientRepository.AddAsync(client);
+        }
+
     }
 }

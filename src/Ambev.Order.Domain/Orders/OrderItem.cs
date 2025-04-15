@@ -1,17 +1,20 @@
 ﻿namespace CleanArchitecture.OrderManagement.Domain.Orders
 {
         public class OrderItem
-
     {
-        public int ProdutoId { get; private set; }
-        public int Quantidade { get; private set; }
-        public decimal Valor { get; private set; }
+        public int ItemId { get; private set; }
+        public Guid OrderId { get; private set; }
+        public Guid ProductId { get; private set; }
+        public int Amount { get; private set; }
+        public decimal Value { get; private set; }
 
-        public OrderItem(int produtoId, int quantidade, decimal valor)
+        public OrderItem(Guid orderId, Guid productId, int amount, decimal value)
         {
-            ProdutoId = produtoId;
-            Quantidade = quantidade;
-            Valor = valor;
+            OrderId = orderId;
+            ProductId = productId;
+            Amount = amount;
+            Value = value;
+
         }
     }
 }

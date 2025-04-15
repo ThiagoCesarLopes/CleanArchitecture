@@ -23,7 +23,7 @@ namespace CleanArchitecture.OrderManagement.Infrastructure.DependencyInjection
             var defaultConnection = configuration.GetConnectionString("DefaultConnection");
 
             // Ensure Microsoft.EntityFrameworkCore and Npgsql.EntityFrameworkCore.PostgreSQL are installed
-            services.AddDbContext<OrderDbContext>(options =>
+            services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(defaultConnection).UseSnakeCaseNamingConvention());
             
             return services;

@@ -1,21 +1,34 @@
 ﻿
 
+using System.Runtime.CompilerServices;
 using CleanArchitecture.OrderManagement.Domain.Clients;
 using CleanArchitecture.OrderManagement.Domain.Clients.Interfaces;
+using CleanArchitecture.OrderManagement.Domain.Orders;
+using CleanArchitecture.OrderManagement.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitecture.OrderManagement.Infrastructure.Repositories.Clients
 {
     public class ClientRepository : IClientRepository
     {
-        private static readonly List<Client> _clients = new()
-                {
-                    new Client(1, Guid.NewGuid(), "Cliente Teste"),
-                    new Client(2, Guid.NewGuid(), "Outro Cliente")
-                };
+        private readonly ApplicationDbContext _context;
 
-        public Task<Client?> GetClientByIdAsync(Guid ClientId)
+        public ClientRepository(ApplicationDbContext context)
         {
-            return Task.FromResult(_clients.FirstOrDefault(c => c.ClientId == ClientId));
+            _context = context;
         }
+
+    
+        public async Task AddAsync(Client client)
+        {
+            _context.Client.Add(client);
+            await _context.SaveChangesAsync();
+        } 
+         public async Task<Client?> GetClientByIdAsync(Guid clientId)
+        { 
+            return await _context.Client.Where(p => p.ClientId == clientId).FirstOrDefaultAsync();
+        }
+
+      
     }
 }

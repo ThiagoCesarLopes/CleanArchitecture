@@ -1,5 +1,6 @@
-﻿using CleanArchitecture.OrderManagement.Application.DTOs.Orders;
+﻿using CleanArchitecture.OrderManagement.Application.DTOs.Orders.Request;
 using CleanArchitecture.OrderManagement.Application.Services.Orders;
+using CleanArchitecture.OrderManagement.Domain.Orders.Enum;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -17,23 +18,23 @@ public class OrderController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateOrder([FromBody] CreateOrderRequest request)
+    public async Task<IActionResult> CreateOrder([FromBody] CreateClientRequest request)
     {
         var result = await _orderService.CreateOrderAsync(request);
-        return CreatedAtAction(nameof(ObterPorId), new { id = result.Id }, result);
+        return CreatedAtAction(nameof(ObterPorId), new { id = result.OrderId }, result);
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> ObterPorId(int id)
     {
-        var pedido = await _orderService.GetOrderIdAsync(id);
+        var pedido = await _orderService.GetOrderByIdAsync(id);
         return pedido is not null ? Ok(pedido) : NotFound();
     }
 
     [HttpGet]
-    public async Task<IActionResult> ListarPorStatus([FromQuery] string status)
+    public async Task<IActionResult> ListarPorStatus([FromQuery] Status status)
     {
-        var pedidos = await _orderService.ListOrderStatusAsync(status);
+        var pedidos = await _orderService.ListOrderByStatusAsync(status);
         return Ok(pedidos);
     }
 }

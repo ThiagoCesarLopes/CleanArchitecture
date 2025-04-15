@@ -11,10 +11,9 @@ namespace CleanArchitecture.OrderManagement.Infrastructure.FeatureManager
 
         public FeatureManager()
         {
-            // Simulação de flags de recursos
             _features = new Dictionary<string, bool>
                 {
-                    { "NovaRegraImposto", true } // Exemplo de flag
+                    { "NewRuleTax", true } 
                 };
         }
 

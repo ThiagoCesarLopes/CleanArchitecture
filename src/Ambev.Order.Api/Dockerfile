@@ -12,19 +12,22 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["src/CleanArchitecture.OrderManagement.Api/CleanArchitecture.OrderManagement.Api.csproj", "src/CleanArchitecture.OrderManagement.Api/"]
-RUN dotnet restore "./src/CleanArchitecture.OrderManagement.Api/CleanArchitecture.Orderw.Api.csproj"
+COPY ["src/Ambev.Order.Api/CleanArchitecture.OrderManagement.Api.csproj", "src/Ambev.Order.Api/"]
+COPY ["src/Ambev.Order.Application/CleanArchitecture.OrderManagement.Application.csproj", "src/Ambev.Order.Application/"]
+COPY ["src/Ambev.Order.Domain/CleanArchitecture.OrderManagement.Domain.csproj", "src/Ambev.Order.Domain/"]
+COPY ["src/Ambev.Order.Infrastructure/CleanArchitecture.OrderManagement.Infrastructure.csproj", "src/Ambev.Order.Infrastructure/"]
+RUN dotnet restore "./src/Ambev.Order.Api/CleanArchitecture.OrderManagement.Api.csproj"
 COPY . .
-WORKDIR "/src/src/CleanArchitecture.orderManagement.Api"
-RUN dotnet build "./CleanArchitecture.orderManagement.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/src/Ambev.Order.Api"
+RUN dotnet build "./CleanArchitecture.OrderManagement.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./CleanArchitecture.orderManagement.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./CleanArchitecture.OrderManagement.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "CleanArchitecture.orderManagement.Api.dll"]
+ENTRYPOINT ["dotnet", "CleanArchitecture.OrderManagement.Api.dll"]

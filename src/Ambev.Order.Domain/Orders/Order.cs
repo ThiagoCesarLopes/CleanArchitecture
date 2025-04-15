@@ -1,29 +1,31 @@
-﻿namespace CleanArchitecture.OrderManagement.Domain.Orders
+﻿using CleanArchitecture.OrderManagement.Domain.Orders.Enum;
+
+namespace CleanArchitecture.OrderManagement.Domain.Orders
 {
     public class Order
     {
-        public int Id { get; private set; }
-        public int PedidoId { get; private set; }
+        public Guid OrderId { get; private set; }
         public Guid ClientId { get; private set; }
-        public List<OrderItem> Itens { get; private set; } = new();
-        public decimal Imposto { get; private set; }
-        public string Status { get; private set; } = "Criado";
-
-        public Order(int pedidoId, Guid clientId)
+        public List<OrderItem> Items { get; private set; } = new();
+        public decimal Tax { get; private set; }
+        public Status Status { get; private set; } 
+        public Order(Guid orderId, Guid clientId, decimal tax, Status status)
         {
-            PedidoId = pedidoId;
+            OrderId = orderId;
             ClientId = clientId;
+            Tax = tax;
+            Status = status;
         }
 
-        public void AdicionarItem(int produtoId, int quantidade, decimal valor)
+        public void AddItem(Guid orderId ,Guid productId, int amount, decimal value)
         {
-            Itens.Add(new OrderItem(produtoId, quantidade, valor));
+            Items.Add(new OrderItem(orderId, productId, amount, value));
         }
 
-        public void CalcularImposto(bool novaRegra)
+        public void CalcularImposto(bool newRule)
         {
-            var total = Itens.Sum(i => i.Quantidade * i.Valor);
-            Imposto = total * (novaRegra ? 0.2m : 0.3m);
+            var total = Items.Sum(i => i.Amount * i.Value);
+            Tax = total * (newRule ? 0.2m : 0.3m);
         }
     }
 }

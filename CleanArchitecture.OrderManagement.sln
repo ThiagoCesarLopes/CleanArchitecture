@@ -13,11 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.OrderMana
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.OrderManagement.Api", "src\Ambev.Order.Api\CleanArchitecture.OrderManagement.Api.csproj", "{90DBF23A-D3F7-4F73-8A49-C4537AC33290}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{81DDED9D-158B-E303-5F62-77A2896D2A5A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{21F429B7-57AE-42E9-BF41-20D809F37498}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Order.Test", "test\CleanArchitecture.Order.Test\CleanArchitecture.Order.Test.csproj", "{EC461E88-6C7E-4E07-B5BF-576E9D6FEE68}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{81DDED9D-158B-E303-5F62-77A2896D2A5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,14 +41,14 @@ Global
 		{90DBF23A-D3F7-4F73-8A49-C4537AC33290}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90DBF23A-D3F7-4F73-8A49-C4537AC33290}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90DBF23A-D3F7-4F73-8A49-C4537AC33290}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EC461E88-6C7E-4E07-B5BF-576E9D6FEE68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EC461E88-6C7E-4E07-B5BF-576E9D6FEE68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC461E88-6C7E-4E07-B5BF-576E9D6FEE68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC461E88-6C7E-4E07-B5BF-576E9D6FEE68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
