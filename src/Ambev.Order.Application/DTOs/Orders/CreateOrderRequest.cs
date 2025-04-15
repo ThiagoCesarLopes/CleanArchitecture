@@ -1,6 +1,6 @@
 ﻿
-using CleanArchitecture.OrderManagement.Application.DTOs.Clientes;
-using CleanArchitecture.OrderManagement.Domain.Clientes;
+using CleanArchitecture.OrderManagement.Application.DTOs.Clients;
+using CleanArchitecture.OrderManagement.Domain.Clients;
 
 namespace CleanArchitecture.OrderManagement.Application.DTOs.Orders
 {

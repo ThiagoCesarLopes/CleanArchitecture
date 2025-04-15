@@ -2,7 +2,7 @@
 
 
 using CleanArchitecture.OrderManagement.Application.DTOs.Orders;
-using CleanArchitecture.OrderManagement.Domain.Clientes.Interfaces;
+using CleanArchitecture.OrderManagement.Domain.Clients.Interfaces;
 using CleanArchitecture.OrderManagement.Domain.Orders;
 using CleanArchitecture.OrderManagement.Domain.Orders.Interfaces;
 using CleanArchitecture.OrderManagement.Infrastructure.FeatureManager.Interfaces;
@@ -13,16 +13,16 @@ namespace CleanArchitecture.OrderManagement.Application.Services.Orders
     public class OrderService : IOrderService
     {
         private readonly IOrderRepository _orderRepository;
-        private readonly IClienteRepository _clienteRepository;
+        private readonly IClientRepository _clientRepository;
         private readonly IFeatureManager _featureManager;
 
         public OrderService(
             IOrderRepository orderRepository,
-            IClienteRepository clienteRepository,
+            IClientRepository clientRepository,
             IFeatureManager featureManager)
         {
             _orderRepository = orderRepository;
-            _clienteRepository = clienteRepository;
+            _clientRepository = clientRepository;
             _featureManager = featureManager;
        
         }
@@ -32,15 +32,16 @@ namespace CleanArchitecture.OrderManagement.Application.Services.Orders
             if (await _orderRepository.ExistOrderAsync(request.OrderId))
                 throw new InvalidOperationException("order duplicado");
 
-            var cliente = await _clienteRepository.GetClientByIdAsync(request.ClienteId);
+            var cliente = await _clientRepository.GetClientByIdAsync(request.ClienteId);
             if (cliente == null)
                 throw new InvalidOperationException("Cliente não encontrado");
 
             var order = new Order(request.OrderId, request.ClienteId);
 
-            foreach (var item in request.OrderId)
+            foreach (var produtoId in request.ProdutosIds)
             {
-                order.AdicionarItem(item.ProdutoId, item.Quantidade, item.Valor);
+                int produtoIdInt = produtoId.GetHashCode(); 
+                order.AdicionarItem(produtoIdInt, 1, 0);
             }
 
             var usarNovaRegra = await _featureManager.IsEnabledAsync("NovaRegraImposto");

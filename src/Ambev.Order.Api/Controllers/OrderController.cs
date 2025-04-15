@@ -19,7 +19,7 @@ public class OrderController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateOrder([FromBody] CreateOrderRequest request)
     {
-        var result = await _orderService.CriarOrderAsync(request);
+        var result = await _orderService.CreateOrderAsync(request);
         return CreatedAtAction(nameof(ObterPorId), new { id = result.Id }, result);
     }
 

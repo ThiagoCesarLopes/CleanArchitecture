@@ -1,7 +1,7 @@
-﻿using CleanArchitecture.OrderManagement.Domain.Clientes.Interfaces;
+﻿using CleanArchitecture.OrderManagement.Domain.Clients.Interfaces;
 using CleanArchitecture.OrderManagement.Domain.Orders.Interfaces;
 using CleanArchitecture.OrderManagement.Infrastructure.Data;
-using CleanArchitecture.OrderManagement.Infrastructure.Repositories.Clientes;
+using CleanArchitecture.OrderManagement.Infrastructure.Repositories.Clients;
 using CleanArchitecture.OrderManagement.Infrastructure.Repositories.Orders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -17,13 +17,13 @@ namespace CleanArchitecture.OrderManagement.Infrastructure.DependencyInjection
             services.AddScoped<IOrderRepository, OrderRepository>();
 
             // Ensure ClienteRepository implements IClienteRepository
-            services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IClientRepository, ClientRepository>();
 
             // Fix for CS0103: Define DefaultConnection using configuration
             var defaultConnection = configuration.GetConnectionString("DefaultConnection");
 
             // Ensure Microsoft.EntityFrameworkCore and Npgsql.EntityFrameworkCore.PostgreSQL are installed
-            services.AddDbContext<PedidoDbContext>(options =>
+            services.AddDbContext<OrderDbContext>(options =>
                 options.UseNpgsql(defaultConnection).UseSnakeCaseNamingConvention());
             
             return services;

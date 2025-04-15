@@ -1,6 +1,6 @@
 ﻿
-using CleanArchitecture.OrderManagement.Application.DTOs.Clientes;
-using CleanArchitecture.OrderManagement.Domain.Clientes;
+using CleanArchitecture.OrderManagement.Application.DTOs.Clients;
+using CleanArchitecture.OrderManagement.Domain.Clients;
 using CleanArchitecture.OrderManagement.Domain.Orders;
 
 namespace CleanArchitecture.OrderManagement.Application.DTOs.Orders
@@ -10,17 +10,17 @@ namespace CleanArchitecture.OrderManagement.Application.DTOs.Orders
     {
         public int Id { get; set; }
         public int PedidoId { get; set; }
-        public Guid ClienteId { get; set; }
-        public ClienteResponse? Cliente { get; set; }
+        public Guid ClientId { get; set; }
+        public ClientResponse? Client { get; set; } 
         public decimal Imposto { get; set; }
         public string Status { get; set; } = string.Empty;
         public List<ItemPedidoResponse> Itens { get; set; } = new();
 
-        public OrderResponse(Order order, Cliente? cliente = null)
+        public OrderResponse(Order order, Client? client = null)
         {
             Id = order.Id;
             PedidoId = order.PedidoId;
-            ClienteId = order.ClienteId;
+            ClientId = order.ClientId;
             Imposto = order.Imposto;
             Status = order.Status;
             Itens = order.Itens.Select(i => new ItemPedidoResponse
@@ -30,9 +30,9 @@ namespace CleanArchitecture.OrderManagement.Application.DTOs.Orders
                 Valor = i.Valor
             }).ToList();
 
-            if (cliente != null)
+            if (client != null)
             {
-                Cliente = new ClienteResponse(cliente);
+                Client = new ClientResponse(client);
             }
         }
     }
