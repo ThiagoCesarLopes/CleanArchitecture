@@ -2,7 +2,8 @@
 using CleanArchitecture.OrderManagement.Api.Extesions;
 using CleanArchitecture.OrderManagement.Infrastructure.DependencyInjection;
 using CleanArchitecture.OrderManagement.Application.DependencyInjection;
-using Serilog;  
+using Serilog;
+using CleanArchitecture.OrderManagement.Api.Middleware;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddExceptionHandler<ValidationExceptionHandler>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

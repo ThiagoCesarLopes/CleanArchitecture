@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CleanArchitecture.Order.Domain\CleanArchitecture.OrderManagement.Domain.csproj" />
     <ProjectReference Include="..\CleanArchitecture.Order.Infrastructure\CleanArchitecture.OrderManagement.Infrastructure.csproj" />
   </ItemGroup>
