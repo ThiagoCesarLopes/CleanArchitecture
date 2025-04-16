@@ -1,6 +1,17 @@
-services:
-  cleanarchitecture.ordermanagement.api:
-    image: ${DOCKER_REGISTRY-}cleanarchitectureordermanagementapi
-    build:
-      context: .
-      dockerfile: src/Ambev.Order.Api/Dockerfile
+services:  
+ cleanarchitecture.ordermanagement.api:  
+   image: ${DOCKER_REGISTRY-}cleanarchitectureordermanagementapi  
+   build:  
+       context: .  
+       dockerfile: src/CleanArchitecture.Order.Api/Dockerfile  
+ cleanarchitecture.ordermanagement-db:  
+   image: postgres:latest  
+   container_name: cleanarchitecture.ordermanagement.Db  
+   environment:  
+     - POSTGRES_DB=ordermanagement-db  
+     - POSTGRES_USER=postgres  
+     - POSTGRES_PASSWORD=postgres  
+   volumes:   
+     - ./.containers/database:/var/lib/postgresql/data  
+   ports:  
+     - "5432:5432"
