@@ -1,8 +1,7 @@
 ﻿namespace CleanArchitecture.OrderManagement.Application.DependencyInjection;
 
 using CleanArchitecture.OrderManagement.Application.Services.Clients;
-using CleanArchitecture.OrderManagement.Application.Services.OrdersServices;
-using CleanArchitecture.OrderManagement.Domain.Orders.Interfaces;
+using CleanArchitecture.OrderManagement.Application.Services.Orders;
 using CleanArchitecture.OrOrderManagementder.Application.Services.Clients;
 using Microsoft.Extensions.DependencyInjection;
 

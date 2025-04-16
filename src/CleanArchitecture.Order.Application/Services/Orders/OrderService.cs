@@ -6,7 +6,7 @@ using CleanArchitecture.OrderManagement.Domain.Orders.Enum;
 using CleanArchitecture.OrderManagement.Domain.Orders.Interfaces;
 using CleanArchitecture.OrderManagement.Infrastructure.FeatureManagers.Interfaces;
 
-namespace CleanArchitecture.OrderManagement.Application.Services.OrdersServices
+namespace CleanArchitecture.OrderManagement.Application.Services.Orders
 {
 
     public class OrderService : IOrderService

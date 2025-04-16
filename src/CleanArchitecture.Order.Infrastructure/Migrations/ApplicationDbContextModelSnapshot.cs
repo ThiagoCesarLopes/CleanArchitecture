@@ -73,8 +73,11 @@ namespace CleanArchitecture.OrderManagement.Infrastructure.Migrations
             modelBuilder.Entity("CleanArchitecture.OrderManagement.Domain.Orders.OrderItem", b =>
                 {
                     b.Property<int>("ItemId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasColumnName("item_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ItemId"));
 
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uuid")

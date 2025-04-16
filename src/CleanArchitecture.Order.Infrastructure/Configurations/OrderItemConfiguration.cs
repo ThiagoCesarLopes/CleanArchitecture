@@ -11,7 +11,8 @@ namespace CleanArchitecture.OrderManagement.Infrastructure.Configurations
         {
             builder.ToTable("OrderItem");
 			builder.HasKey(o => new { o.ItemId, o.OrderId });
-			builder.Property(o => o.OrderId).IsRequired().ValueGeneratedNever();
+            builder.Property(o => o.ItemId).IsRequired().ValueGeneratedOnAdd();
+            builder.Property(o => o.OrderId).IsRequired().ValueGeneratedNever();
 			builder.Property(o => o.ProductId).IsRequired();    
 			builder.Property(o => o.Amount).IsRequired();
 			builder.Property(o => o.Value).IsRequired();

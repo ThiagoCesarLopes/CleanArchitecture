@@ -1,6 +1,7 @@
 
 using CleanArchitecture.OrderManagement.Api.Extesions;
 using CleanArchitecture.OrderManagement.Infrastructure.DependencyInjection;
+using CleanArchitecture.OrderManagement.Application.DependencyInjection;
 using Serilog;  
 
 
@@ -15,6 +16,8 @@ builder.Host.UseSerilog((ctx, lc) => lc
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 var app = builder.Build();
 
