@@ -4,11 +4,11 @@ services:
    build:  
        context: .  
        dockerfile: src/CleanArchitecture.Order.Api/Dockerfile  
- cleanarchitecture.ordermanagement-db:  
+ cleanarchitecture.ordermanagement.db:  
    image: postgres:latest  
-   container_name: cleanarchitecture.ordermanagement.Db  
+   container_name: ordermanagement.Db  
    environment:  
-     - POSTGRES_DB=ordermanagement-db  
+     - POSTGRES_DB=ordermanagement_db  
      - POSTGRES_USER=postgres  
      - POSTGRES_PASSWORD=postgres  
    volumes:   
