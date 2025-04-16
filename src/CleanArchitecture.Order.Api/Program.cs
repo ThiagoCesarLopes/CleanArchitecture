@@ -20,9 +20,20 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
+
+builder.Services.AddProblemDetails(options =>
+{
+    options.CustomizeProblemDetails = context =>
+    {
+        context.ProblemDetails.Extensions.TryAdd("requestId", context.HttpContext.TraceIdentifier);
+    };
+});
 builder.Services.AddExceptionHandler<ValidationExceptionHandler>();
 
 var app = builder.Build();
+app.UseExceptionHandler();
+
+
 
 if (app.Environment.IsDevelopment())
 {

@@ -8,14 +8,14 @@ using Microsoft.Extensions.DependencyInjection;
 
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services )
         {
 
-            services.AddScoped<IOrderService, OrderService>();
-            services.AddScoped<IClientService, ClientService>();
-            services.AddValidatorsFromAssembly(typeof(ServiceCollectionExtensions).Assembly, includeInternalTypes: true);
+        services.AddValidatorsFromAssembly(typeof(ServiceCollectionExtensions).Assembly, includeInternalTypes: true);
+        services.AddScoped<IOrderService, OrderService>();
+        services.AddScoped<IClientService, ClientService>();
 
         return services;
         }
-    }
 
+}
