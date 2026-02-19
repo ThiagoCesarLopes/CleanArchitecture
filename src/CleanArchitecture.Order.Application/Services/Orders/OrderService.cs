@@ -58,9 +58,11 @@ namespace CleanArchitecture.OrderManagement.Application.Services.Orders
         public async Task<OrderResponse?> GetOrderByIdAsync(Guid orderId)
         {
             var order = await _orderRepository.GetOrderByIdAsync(orderId);
-            var items = order.Items.Select(i => new OrderItemsResponse(i.OrderId, i.ProductId, i.Amount, i.Value)).ToList();
+            if (order == null)
+                return null;
 
-            return order == null ? null : new OrderResponse(order.OrderId,order.ClientId, order.Tax,order.Status, items);
+            var items = order.Items.Select(i => new OrderItemsResponse(i.OrderId, i.ProductId, i.Amount, i.Value)).ToList();
+            return new OrderResponse(order.OrderId,order.ClientId, order.Tax,order.Status, items);
         }
 
         public async Task<IEnumerable<OrderResponse>> ListOrderByStatusAsync(Status status)

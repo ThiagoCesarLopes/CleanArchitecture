@@ -8,7 +8,7 @@ namespace CleanArchitecture.OrderManagement.Application.DTOs.Orders.Request
     {
         public Guid OrderId { get; set; }
         public Guid ClienteId { get; set; }
-        public List<CreateOrderItemRequest> Items { get; set; }
+        public List<CreateOrderItemRequest> Items { get; set; } = new();
         public decimal Tax { get; set; }
         public Status Status { get; set; }
     }
